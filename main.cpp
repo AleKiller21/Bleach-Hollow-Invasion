@@ -114,7 +114,7 @@ void waves(int numwave)
                     return;
                 }
 
-                else if((*i)->contador_puntos == 100)
+                else if((*i)->contador_puntos == 400)//100
                 {
                     *wave_apuntador = true;
                     (*i)->reset();
@@ -132,7 +132,7 @@ void waves(int numwave)
 
         SDL_Delay(16.66);
 
-        if(segundos == 800 && (*wave_apuntador) != true)
+        if(segundos == 2300 && (*wave_apuntador) != true)//800
         {
             esc = true;
             return;
@@ -216,8 +216,12 @@ void loopMenu()
                 {
                     cout << "START!" << endl;
                     rect_text.y = 500;
+                    segundos = 0;
+                    wave1_complete = false;
+                    wave2_complete = false;
                     dialogo_actual = dialogo_texturas.begin();
                     frame = 0;
+                    game_background = IMG_LoadTexture(renderer, "assets/Bleach/stage_night - Copy.png");
                     loopGame();
                 }
 
