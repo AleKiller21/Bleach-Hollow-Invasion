@@ -35,6 +35,7 @@ bool esc = false;
 list<Personaje*>personajes;
 list<SDL_Texture*>dialogo_texturas;
 list<SDL_Texture*>::iterator dialogo_actual;
+list<SDL_Texture*> creditos_texturas;
 
 void show_dialogs()
 {
@@ -75,7 +76,7 @@ void waves(int numwave)
         segundos++;
         //cout << "Segundos: " << segundos << endl;
         frame++;
-        if(frame%50==0)
+        if(frame%100==0)
         {
             if(numwave == 1)
                 personajes.push_back(new Hollow (rand()%880,rand() % 570,renderer,&personajes));
@@ -156,14 +157,9 @@ void loopGame()
         wave2();
 }
 
-void show_credits()
-{
-
-}
-
 void credits()
 {
-    while(true)
+    while(dialogo_actual != creditos_texturas.end())
     {
         while(SDL_PollEvent(&Event))
         {
@@ -179,7 +175,22 @@ void credits()
                 exit(0);
             }
         }
+
+        if(frame%20 == 0)
+        {
+            rect_text.y--;
+            if(rect_text.y == 250)
+            {
+                rect_text.y = 500;
+                dialogo_actual++;
+                if(dialogo_actual == creditos_texturas.end())
+                    break;
+            }
+        }
+        frame++;
+
         SDL_RenderCopy(renderer, credits_background, NULL, &rect_background);
+        SDL_RenderCopy(renderer, *dialogo_actual, NULL, &rect_text);
         SDL_RenderPresent(renderer);
     }
 }
@@ -204,11 +215,15 @@ void loopMenu()
                 if((mouse_x >= 248 && mouse_x <= 542) && (mouse_y >= 298 && mouse_y <= 369))
                 {
                     cout << "START!" << endl;
+                    rect_text.y = 500;
+                    dialogo_actual = dialogo_texturas.begin();
+                    frame = 0;
                     loopGame();
                 }
 
                 if((mouse_x >= 245 && mouse_x <= 538) && (mouse_y >= 382 && mouse_y <= 456))
                 {
+                    dialogo_actual = creditos_texturas.begin();
                    credits();
                 }
 
@@ -244,12 +259,33 @@ SDL_Surface * setText(int pos)
 
     case 6:
         return TTF_RenderText_Solid(font, "Hirako: This should bring you back memories of when you first encounter your friend Ishida. Now go!", text_color);
+
+    case 7:
+        return TTF_RenderText_Solid(font, "Hollow1: Neimad", text_color);
+
+    case 8:
+        return TTF_RenderText_Solid(font, "Ichigo left attack: Neo1146 ", text_color);
+
+    case 9:
+        return TTF_RenderText_Solid(font, "Hollow2: Ichigo-San", text_color);
+
+    case 10:
+        return TTF_RenderText_Solid(font, "Stage2: parrishbroadnax", text_color);
+
+    case 11:
+        return TTF_RenderText_Solid(font, "Stage1: JoonTH", text_color);
+
+    case 12:
+        return TTF_RenderText_Solid(font, "Ichigo's movement: Neimad & Yurestu", text_color);
+
+    case 13:
+        return TTF_RenderText_Solid(font, "Hollow3: Kionji", text_color);
     }
 }
 
 void load_dialog()
 {
-    font = TTF_OpenFont("ARLRDBD.ttf", 30);
+    font = TTF_OpenFont("ARLRDBD.ttf", 30);//30
     if(font == NULL)
     {
         cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
@@ -275,6 +311,25 @@ void load_dialog()
 
         dialogo_texturas.push_back(text_texture);
     }
+
+    for(int i = 7; i < 14; i++)
+    {
+        text = setText(i);
+        if(text == NULL)
+        {
+            TTF_Quit();
+            cout << "No se cargo el dialogo" << endl;
+        }
+
+        text_texture = SDL_CreateTextureFromSurface(renderer, text);
+        if(text_texture == NULL)
+        {
+            cout << "Fallo la conversion a textura" << endl;
+        }
+
+        creditos_texturas.push_back(text_texture);
+    }
+
     dialogo_actual = dialogo_texturas.begin();
 
     SDL_QueryTexture(*dialogo_actual, NULL, NULL, &w, &h);
