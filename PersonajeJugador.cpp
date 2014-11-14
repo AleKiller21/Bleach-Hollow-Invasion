@@ -75,6 +75,9 @@ PersonajeJugador::PersonajeJugador(int x, int y, SDL_Renderer* renderer, list<Pe
     orientacion="right";
 
     textura_actual=texturas_right.begin();
+    contador_puntos = 0;
+    HP = 200;
+    id = "Personaje";
 }
 
 PersonajeJugador::~PersonajeJugador()
@@ -142,15 +145,18 @@ void PersonajeJugador::logic(Uint8* teclas_presionadas)
             continue;
         if(colision(this->rectangulo, (*i)->rectangulo) && ataque == true)
         {
-            //rectangulo=temp;
+            (*i)->destroy_textures();
             personajes->erase(i);
-            break;
+            contador_puntos+=20;
+            cout << "Puntos acumulados: " << contador_puntos << endl;
+            //break;
         }
 
         else if(colision(this->rectangulo, (*i)->rectangulo) && ataque != true)
         {
             rectangulo = temp;
-            cout <<"Estas perdiendo vida!" << endl;
+            HP--;
+            cout <<"HP: " << HP << endl;
         }
     }
 }

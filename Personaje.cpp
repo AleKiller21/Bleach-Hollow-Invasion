@@ -67,23 +67,24 @@ void Personaje::destroy_textures()
         SDL_DestroyTexture(*textura_actual);
     }
 
-    for(textura_actual = texturas_up.begin(); textura_actual != texturas_down.end(); textura_actual++)
+    for(textura_actual = texturas_up.begin(); textura_actual != texturas_up.end(); textura_actual++)
     {
         SDL_DestroyTexture(*textura_actual);
     }
 
-    for(textura_actual = texturas_left.begin(); textura_actual != texturas_down.end(); textura_actual++)
+    for(textura_actual = texturas_left.begin(); textura_actual != texturas_left.end(); textura_actual++)
     {
         SDL_DestroyTexture(*textura_actual);
     }
 
-    for(textura_actual = texturas_right.begin(); textura_actual != texturas_down.end(); textura_actual++)
+    for(textura_actual = texturas_right.begin(); textura_actual != texturas_right.end(); textura_actual++)
     {
         SDL_DestroyTexture(*textura_actual);
     }
+}
 
-    for(textura_actual = texturas_ataque.begin(); textura_actual != texturas_down.end(); textura_actual++)
-    {
-        SDL_DestroyTexture(*textura_actual);
-    }
+void Personaje::reset()
+{
+    HP = 200;
+    contador_puntos = 0;
 }

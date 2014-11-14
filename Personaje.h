@@ -20,13 +20,17 @@ class Personaje
         list<SDL_Texture*> texturas_ataque_up;
         list<SDL_Texture*> texturas_ataque_down;
         string orientacion;
+        string id;
         list<SDL_Texture*>::iterator textura_actual;
         list<Personaje*>*personajes;
         int frame;
+        int HP;
+        int contador_puntos;
         Personaje();
         virtual void logic(Uint8* teclas_presionadas);
         virtual void render(SDL_Renderer* renderer);
         void destroy_textures();
+        void reset();
         virtual ~Personaje();
 
         bool colision(SDL_Rect r1, SDL_Rect r2);

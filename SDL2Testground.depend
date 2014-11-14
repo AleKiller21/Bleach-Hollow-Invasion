@@ -557,17 +557,19 @@
 	<SDL2/SDL_image.h>
 	<iostream>
 
-1415658902 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\main.cpp
+1415892130 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\main.cpp
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_ttf.h>
 	<iostream>
 	<list>
+	<stdlib.h>
 	"Personaje.h"
 	"PersonajeJugador.h"
 	"NPC.h"
 	"Hollow.h"
 	"Hollow2.h"
-	<stdlib.h>
+	"Hollow3.h"
 
 1394937196 c:\mingw_dev_lib\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -891,41 +893,52 @@
 	"begin_code.h"
 	"close_code.h"
 
-1415661082 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.h
+1415843555 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.h
 	<SDL.h>
 	<SDL_image.h>
 	<list>
 	<iostream>
 
-1415569815 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.cpp
+1415850424 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.cpp
 	"Personaje.h"
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
 
-1415575106 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.h
+1415821270 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.h
 	"Personaje.h"
 	<iostream>
 
-1415661290 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.cpp
+1415840642 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.cpp
 	"PersonajeJugador.h"
 
-1415630913 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\npc.cpp
+1415734285 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\npc.cpp
 	"NPC.h"
 
 1415582226 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\npc.h
 	"Personaje.h"
 	<stdlib.h>
 
-1415631251 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow.cpp
+1415840642 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow.cpp
 	"Hollow.h"
 
 1415582385 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow.h
 	"NPC.h"
 
-1415658800 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow2.cpp
+1415846588 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow2.cpp
 	"Hollow2.h"
 
 1415631231 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow2.h
 	"NPC.h"
+
+1415849784 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow3.cpp
+	"Hollow3.h"
+
+1415849784 c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\hollow3.h
+	"NPC.h"
+
+1376152952 c:\mingw_dev_lib\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
 

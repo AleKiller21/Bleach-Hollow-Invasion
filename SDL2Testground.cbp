@@ -38,10 +38,15 @@
 			<Add option="-lSDL2main" />
 			<Add option="-lSDL2" />
 			<Add option="-lSDL2_image" />
+			<Add library="C:\mingw_dev_lib\lib\x86\SDL2_ttf.lib" />
 			<Add directory="C:/mingw_dev_lib/lib" />
 		</Linker>
 		<Unit filename="Hollow.cpp" />
 		<Unit filename="Hollow.h" />
+		<Unit filename="Hollow2.cpp" />
+		<Unit filename="Hollow2.h" />
+		<Unit filename="Hollow3.cpp" />
+		<Unit filename="Hollow3.h" />
 		<Unit filename="NPC.cpp" />
 		<Unit filename="NPC.h" />
 		<Unit filename="Personaje.cpp" />

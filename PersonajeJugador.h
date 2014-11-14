@@ -8,6 +8,8 @@ class PersonajeJugador : public Personaje
     public:
         bool moviendo = false;
         bool ataque = false;
+        //int contador_puntos;
+        //int HP;
         PersonajeJugador(int x, int y, SDL_Renderer* renderer, list<Personaje*>*personajes);
         void logic(Uint8* teclas_presionadas);
         void render(SDL_Renderer* renderer);

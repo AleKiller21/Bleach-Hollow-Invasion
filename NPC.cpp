@@ -43,23 +43,23 @@ void NPC::randomize()
         textura_actual = texturas_right.begin();
         orientacion = "right";
         rectangulo.x = 0;
-        cout << "va derecha" << endl;
+        //cout << "va derecha" << endl;
     }
 
     else if(x == 1)
     {
         textura_actual = texturas_left.begin();
         orientacion = "left";
-        rectangulo.x = 500;
+        rectangulo.x = 895;
         //cout << "Fallo" << endl;
     }
 
     else if(x == 2)
     {
         textura_actual = texturas_up.begin();
-        rectangulo.y = 300;
+        rectangulo.y = 575;
         orientacion = "up";
-        cout << "va arriba" << endl;
+        //out << "va arriba" << endl;
     }
 
     else
@@ -67,7 +67,7 @@ void NPC::randomize()
         textura_actual = texturas_down.begin();
         orientacion = "down";
         rectangulo.x = 0;
-        cout << "va abajo" << endl;
+        //cout << "va abajo" << endl;
     }
 }
 
@@ -78,7 +78,7 @@ void NPC::logic(Uint8* teclas_presionadas)
     if(orientacion == "right")
     {
         rectangulo.x++;
-        if(rectangulo.x>560)
+        if(rectangulo.x>900)
         {
             randomize();
         }
@@ -87,7 +87,7 @@ void NPC::logic(Uint8* teclas_presionadas)
     else if(orientacion == "left")
     {
         rectangulo.x--;
-        cout << "Fallo" << endl;
+        //cout << "Fallo" << endl;
         if(rectangulo.x < 30)
         {
             randomize();
@@ -106,7 +106,7 @@ void NPC::logic(Uint8* teclas_presionadas)
     else if(orientacion == "down")
     {
         rectangulo.y++;
-        if(rectangulo.y > 340)
+        if(rectangulo.y > 580)
         {
             randomize();
         }
