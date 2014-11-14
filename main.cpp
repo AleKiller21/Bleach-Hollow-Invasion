@@ -16,25 +16,56 @@ using namespace std;
 SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Event Event;
-SDL_Texture *background,*game_background, *text_texture;
+SDL_Texture *background,*game_background, *credits_background, *text_texture;
 SDL_Rect rect_background,rect_character, rect_text;
+
 TTF_Font * font;
 SDL_Color text_color = {0,0,0};
 SDL_Surface * text;
+
 Personaje p;
 int frame=0;
 int segundos = 0;
+int w=0,h=0;
 bool wave1_complete = false;
 bool wave2_complete = false;
+bool dialogs1 = true;
 bool * wave_apuntador = NULL;
 bool esc = false;
 list<Personaje*>personajes;
+list<SDL_Texture*>dialogo_texturas;
+list<SDL_Texture*>::iterator dialogo_actual;
+
+void show_dialogs()
+{
+    while(dialogo_actual != dialogo_texturas.end())
+    {
+        SDL_RenderCopy(renderer, game_background, NULL, &rect_background);
+        SDL_RenderCopy(renderer, *dialogo_actual, NULL, &rect_text);
+        SDL_RenderPresent(renderer);
+        while(SDL_PollEvent(&Event))
+        {
+            if(Event.type == SDL_KEYDOWN)
+            {
+                if(Event.key.keysym.sym == SDLK_RETURN)
+                {
+                    dialogo_actual++;
+                }
+            }
+            if(Event.type == SDL_QUIT)
+            {
+                exit(0);
+            }
+        }
+    }
+}
 
 void waves(int numwave)
 {
     if(numwave == 1)
     {
         wave_apuntador = &wave1_complete;
+        show_dialogs();
     }
     else if(numwave == 2)
         wave_apuntador = &wave2_complete;
@@ -42,9 +73,9 @@ void waves(int numwave)
     while((*wave_apuntador) != true)
     {
         segundos++;
-        cout << "Segundos: " << segundos << endl;
+        //cout << "Segundos: " << segundos << endl;
         frame++;
-        if(frame%100==0)
+        if(frame%50==0)
         {
             if(numwave == 1)
                 personajes.push_back(new Hollow (rand()%880,rand() % 570,renderer,&personajes));
@@ -91,6 +122,7 @@ void waves(int numwave)
         }
 
         SDL_RenderCopy(renderer, game_background, NULL, &rect_background);
+        //SDL_RenderCopy(renderer, *dialogo_actual, NULL, &rect_text);
 
         for(list<Personaje*>::iterator i = personajes.begin(); i!=personajes.end(); i++)
             (*i)->render(renderer);
@@ -124,6 +156,34 @@ void loopGame()
         wave2();
 }
 
+void show_credits()
+{
+
+}
+
+void credits()
+{
+    while(true)
+    {
+        while(SDL_PollEvent(&Event))
+        {
+            if(Event.type == SDL_KEYDOWN)
+            {
+                if(Event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    return;
+                }
+            }
+            if(Event.type == SDL_QUIT)
+            {
+                exit(0);
+            }
+        }
+        SDL_RenderCopy(renderer, credits_background, NULL, &rect_background);
+        SDL_RenderPresent(renderer);
+    }
+}
+
 void loopMenu()
 {
     int mouse_x;
@@ -147,9 +207,9 @@ void loopMenu()
                     loopGame();
                 }
 
-                if((mouse_x >= 245 && mouse_x <= 538) && (mouse_y >= 428 && mouse_y <= 501))
+                if((mouse_x >= 245 && mouse_x <= 538) && (mouse_y >= 382 && mouse_y <= 456))
                 {
-                    cout << "Credits!" << endl;
+                   credits();
                 }
 
                 if((mouse_x >= 256 && mouse_x <= 537) && (mouse_y >= 487 && mouse_y <= 561))
@@ -159,9 +219,66 @@ void loopMenu()
             }
         }
         SDL_RenderCopy(renderer, background, NULL, &rect_background);
-        SDL_RenderCopy(renderer, text_texture, NULL, &rect_text);
         SDL_RenderPresent(renderer);
     }
+}
+
+SDL_Surface * setText(int pos)
+{
+    switch(pos)
+    {
+    case 1:
+        return TTF_RenderText_Solid(font, "Ichigo: Hirako! What have you done?!", text_color);
+
+    case 2:
+        return TTF_RenderText_Solid(font, "Hirako: This is your final test, Ichigo.", text_color);
+
+    case 3:
+        return TTF_RenderText_Solid(font, "Hirako: You'll have to use your hollow powers to defeat all those hollows.", text_color);
+
+    case 4:
+        return TTF_RenderText_Solid(font, "Hirako: Fail and all the humans in Karakura town will die.", text_color);
+
+    case 5:
+        return TTF_RenderText_Solid(font, "Ichigo: Damned you!", text_color);
+
+    case 6:
+        return TTF_RenderText_Solid(font, "Hirako: This should bring you back memories of when you first encounter your friend Ishida. Now go!", text_color);
+    }
+}
+
+void load_dialog()
+{
+    font = TTF_OpenFont("ARLRDBD.ttf", 30);
+    if(font == NULL)
+    {
+        cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
+        TTF_Quit();
+        exit(0);
+    }
+    //text = TTF_RenderText_Solid(font, "Probando...", text_color);
+
+    for(int i = 1; i < 7; i++)
+    {
+        text = setText(i);
+        if(text == NULL)
+        {
+            TTF_Quit();
+            cout << "No se cargo el dialogo" << endl;
+        }
+
+        text_texture = SDL_CreateTextureFromSurface(renderer, text);
+        if(text_texture == NULL)
+        {
+            cout << "Fallo la conversion a textura" << endl;
+        }
+
+        dialogo_texturas.push_back(text_texture);
+    }
+    dialogo_actual = dialogo_texturas.begin();
+
+    SDL_QueryTexture(*dialogo_actual, NULL, NULL, &w, &h);
+    rect_text.x = 10; rect_text.y = 500; rect_text.w = w; rect_text.h = h;
 }
 
 int main( int argc, char* args[] )
@@ -189,37 +306,25 @@ int main( int argc, char* args[] )
         return 30;
     }
 
-    font = TTF_OpenFont("ARLRDBD.ttf", 20);
-    if(font == NULL)
-    {
-        cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
-        TTF_Quit();
-        exit(0);
-    }
+
 
     //Init textures
-    int w=0,h=0;
-    text = TTF_RenderText_Solid(font, "Probando...", text_color);
-    if(text == NULL)
-    {
-        TTF_Quit();
-        cout << "No se cargo el dialogo" << endl;
-    }
-    text_texture = SDL_CreateTextureFromSurface(renderer, text);
-    if(text_texture == NULL)
-    {
-        cout << "Fallo la conversion a textura" << endl;
-    }
+
+
+
+
+
     background = IMG_LoadTexture(renderer,"assets/Bleach/Main_menu.png");
     game_background = IMG_LoadTexture(renderer, "assets/Bleach/stage_night - Copy.png");
+    credits_background = IMG_LoadTexture(renderer, "assets/Bleach/Credits.png");
     SDL_QueryTexture(background, NULL, NULL, &w, &h);
     rect_background.x = 0; rect_background.y = 0; rect_background.w = w; rect_background.h = h;
 
-    SDL_QueryTexture(text_texture, NULL, NULL, &w, &h);
-    rect_text.x = 100; rect_text.y = 500; rect_text.w = w; rect_text.h = h;
+    load_dialog();
+    //SDL_QueryTexture(text_texture, NULL, NULL, &w, &h);
+    //rect_text.x = 100; rect_text.y = 500; rect_text.w = w; rect_text.h = h;
 
     SDL_RenderCopy(renderer, background, NULL, &rect_background);
-    SDL_RenderCopy(renderer, text_texture, NULL, &rect_text);
 
     SDL_RenderPresent(renderer);
 

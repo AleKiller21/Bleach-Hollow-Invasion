@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="NPC.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="547" topLine="84" />
-		</Cursor>
-	</File>
-	<File name="PersonajeJugador.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8065" topLine="153" />
-		</Cursor>
-	</File>
 	<File name="Hollow2.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="182" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Personaje.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="NPC.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="957" topLine="3" />
+			<Cursor1 position="547" topLine="84" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3500" topLine="120" />
+		</Cursor>
+	</File>
+	<File name="PersonajeJugador.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8065" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="PersonajeJugador.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -28,7 +28,7 @@
 	</File>
 	<File name="Personaje.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="387" topLine="8" />
+			<Cursor1 position="387" topLine="11" />
 		</Cursor>
 	</File>
 	<File name="Hollow.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -36,9 +36,14 @@
 			<Cursor1 position="178" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="Personaje.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4229" topLine="142" />
+			<Cursor1 position="957" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="Hollow2.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="111" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="NPC.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -49,11 +54,6 @@
 	<File name="Hollow.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2164" topLine="26" />
-		</Cursor>
-	</File>
-	<File name="Hollow2.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="111" topLine="2" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
