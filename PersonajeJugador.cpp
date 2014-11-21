@@ -92,7 +92,7 @@ void PersonajeJugador::logic(Uint8* teclas_presionadas)
 
     if( teclas_presionadas[ SDL_SCANCODE_UP ] )
     {
-        rectangulo.y-=6;
+        rectangulo.y-=10;
         moviendo = true;
         if(orientacion!="up")
             textura_actual=texturas_up.begin();
@@ -101,7 +101,7 @@ void PersonajeJugador::logic(Uint8* teclas_presionadas)
 
     if( teclas_presionadas[ SDL_SCANCODE_DOWN ])
     {
-        rectangulo.y+=6;
+        rectangulo.y+=10;
          moviendo = true;
         if(orientacion!="down")
             textura_actual=texturas_down.begin();
@@ -110,7 +110,7 @@ void PersonajeJugador::logic(Uint8* teclas_presionadas)
 
     if( teclas_presionadas[ SDL_SCANCODE_RIGHT ] )
     {
-        rectangulo.x+=6;
+        rectangulo.x+=10;
          moviendo = true;
         if(orientacion!="right")
             textura_actual=texturas_right.begin();
@@ -119,7 +119,7 @@ void PersonajeJugador::logic(Uint8* teclas_presionadas)
 
     if( teclas_presionadas[ SDL_SCANCODE_LEFT ] )
     {
-        rectangulo.x-=6;
+        rectangulo.x-=10;
          moviendo = true;
         if(orientacion!="left")
             textura_actual=texturas_left.begin();

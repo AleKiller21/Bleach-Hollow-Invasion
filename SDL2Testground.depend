@@ -557,13 +557,14 @@
 	<SDL2/SDL_image.h>
 	<iostream>
 
-1415950468 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\main.cpp
+1415998995 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
 	<iostream>
 	<list>
 	<stdlib.h>
+	<fstream>
 	"Personaje.h"
 	"PersonajeJugador.h"
 	"NPC.h"
@@ -899,7 +900,7 @@
 	<list>
 	<iostream>
 
-1415850424 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.cpp
+1415989534 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personaje.cpp
 	"Personaje.h"
 	<SDL.h>
 	<SDL_image.h>
@@ -909,7 +910,7 @@
 	"Personaje.h"
 	<iostream>
 
-1415840642 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.cpp
+1415989415 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\personajejugador.cpp
 	"PersonajeJugador.h"
 
 1415734285 source:c:\users\alejandro\unitec\v trimestre\lab. progra iii\sdl2testsimple-master\sdl2testsimple-master\npc.cpp

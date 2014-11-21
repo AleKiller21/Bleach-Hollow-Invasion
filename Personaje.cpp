@@ -22,7 +22,7 @@ void Personaje::render(SDL_Renderer* renderer)
 {
     SDL_RenderCopy(renderer, *textura_actual, NULL, &rectangulo);
 
-    if(frame%5==0)//25
+    if(frame%2==0)//25
         textura_actual++;
     if(orientacion=="down")
     {

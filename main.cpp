@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <stdlib.h>
+#include <fstream>
 #include "Personaje.h"
 #include "PersonajeJugador.h"
 #include "NPC.h"
@@ -27,6 +28,9 @@ Personaje p;
 int frame=0;
 int segundos = 0;
 int w=0,h=0;
+int pos_x;
+int pos_y;
+string basura;
 bool wave1_complete = false;
 bool wave2_complete = false;
 bool dialogs1 = true;
@@ -36,6 +40,29 @@ list<Personaje*>personajes;
 list<SDL_Texture*>dialogo_texturas;
 list<SDL_Texture*>::iterator dialogo_actual;
 list<SDL_Texture*> creditos_texturas;
+
+void guardar_posicion()
+{
+    cout << "Llego" << endl;
+    ofstream out("Posicion_jugador.txt");
+    out << pos_x << endl;;
+    //out << "-";
+    out << pos_y << endl;;
+    out.close();
+}
+
+void cargar_posicion()
+{
+    ifstream in("Posicion_jugador.txt");
+    in.seekg(0);
+    in >> pos_x;
+    //in >> basura;
+    in >> pos_y;
+    cout << pos_x << endl;
+    //cout << basura;
+    cout << pos_y << endl;
+    in.close();
+}
 
 void show_dialogs()
 {
@@ -76,7 +103,7 @@ void waves(int numwave)
         segundos++;
         //cout << "Segundos: " << segundos << endl;
         frame++;
-        if(frame%100==0)
+        if(frame%50==0)
         {
             if(numwave == 1)
                 personajes.push_back(new Hollow (rand()%880,rand() % 570,renderer,&personajes));
@@ -108,6 +135,8 @@ void waves(int numwave)
             (*i)->logic((Uint8*)SDL_GetKeyboardState( NULL ));
             if((*i)->id == "Personaje")
             {
+                pos_x = (*i)->rectangulo.x;
+                pos_y = (*i)->rectangulo.y;
                 if((*i)->HP == 0)
                 {
                     (*i)->reset();
@@ -223,6 +252,7 @@ void loopMenu()
                     frame = 0;
                     game_background = IMG_LoadTexture(renderer, "assets/Bleach/stage_night - Copy.png");
                     loopGame();
+                    guardar_posicion();
                 }
 
                 if((mouse_x >= 245 && mouse_x <= 538) && (mouse_y >= 382 && mouse_y <= 456))
@@ -365,6 +395,8 @@ int main( int argc, char* args[] )
         return 30;
     }
 
+    cargar_posicion();
+
 
 
     //Init textures
@@ -387,7 +419,7 @@ int main( int argc, char* args[] )
 
     SDL_RenderPresent(renderer);
 
-    personajes.push_back(new PersonajeJugador (0,0,renderer,&personajes));
+    personajes.push_back(new PersonajeJugador (pos_x,pos_y,renderer,&personajes));
     loopMenu();
 
     return 0;
